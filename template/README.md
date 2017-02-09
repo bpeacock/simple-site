@@ -1,5 +1,5 @@
-Simply Aware
-============
+<PROJECT NAME>
+====
 
 *Installation:* `npm install`
 

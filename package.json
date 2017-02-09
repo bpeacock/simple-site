@@ -1,15 +1,20 @@
 {
-  "name": "Simple Site",
+  "name": "simple-site",
   "version": "0.0.0",
-  "description": "",
-  "author": "",
+  "description": "A command-line tool for creating simple compiled websites.",
+  "author": "Brian Peacock",
   "main": "index.js",
-  "repository": "",
-  "license": "",
+  "repository": "https://github.com/bpeacock/simple-site",
+  "license": "MIT License",
   "dependencies": {
-
+    "commander": "^2.9.0",
+    "ncp": "^2.0.0",
+    "stream-replace": "^1.0.0"
   },
   "engines": {
     "node": "0.10.x"
+  },
+  "bin": {
+    "simple-site": "./index.js"
   }
 }
