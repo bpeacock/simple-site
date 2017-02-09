@@ -10,24 +10,25 @@ ncp.limit = 16; // Limit Threads
 program
   .arguments('<projectName>')
   .action(function(projectName) {
-    var location = process.cwd() + '/' + projectName;
+    var projectLocation = process.cwd() + '/' + projectName,
+        codeLocation = __dirname;
 
-    ncp('./template', location, function (err) {
-      if (err) {
-        return console.error(err);
+    ncp(codeLocation + '/template', projectLocation, function (error) {
+      if(error) {
+        return console.error(error);
       }
 
       // File Replacements
-      fs.createReadStream('./template/package.json')
+      fs.createReadStream(codeLocation + '/template/package.json')
         .pipe(replace('<PROJECT NAME>', projectName))
-        .pipe(fs.createWriteStream(location + '/package.json'));
+        .pipe(fs.createWriteStream(projectLocation + '/package.json'));
 
-      fs.createReadStream('./template/README.md')
+      fs.createReadStream(codeLocation + '/template/README.md')
         .pipe(replace('<PROJECT NAME>', projectName))
-        .pipe(fs.createWriteStream(location + '/README.md'));
+        .pipe(fs.createWriteStream(projectLocation + '/README.md'));
 
       // Mark Completion
-      console.log('New project "' + projectName + '" created at ' + location);
+      console.log('New project "' + projectName + '" created at ' + projectLocation);
     });
   })
   .parse(process.argv);
