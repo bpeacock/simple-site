@@ -20,7 +20,7 @@ program
 
       // File Replacements
       fs.createReadStream(codeLocation + '/template/package.json')
-        .pipe(replace('<PROJECT NAME>', projectName))
+        .pipe(replace('PROJECTNAME', projectName))
         .pipe(fs.createWriteStream(projectLocation + '/package.json'));
 
       fs.createReadStream(codeLocation + '/template/README.md')
