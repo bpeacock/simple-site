@@ -1,5 +1,8 @@
-Simple Site
+simple-site
 ===========
 
-Template for making compiled static websites using gulp, jade, markdown, and less.
+Command line tool for making compiled static websites using gulp, jade, markdown, and less.
 
+*Installation:* `npm install -g`
+
+*Usage:* `simple-site <project-name>`
