@@ -1,8 +1,8 @@
 <PROJECT NAME>
 ====
 
-*Installation:* `npm install`
+**Installation:** `npm install`
 
-*Build:* `gulp`
+**Build:** `gulp`
 
-*Serve & Watch:* `gulp serve`
+**Serve & Watch:** `gulp serve`
