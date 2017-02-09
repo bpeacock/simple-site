@@ -20,12 +20,15 @@ program
 
       // File Replacements
       fs.createReadStream(codeLocation + '/template/package.json')
-        .pipe(replace('PROJECTNAME', projectName))
+        .pipe(replace('<PROJECT NAME>', projectName))
         .pipe(fs.createWriteStream(projectLocation + '/package.json'));
 
       fs.createReadStream(codeLocation + '/template/README.md')
-        .pipe(replace('<PROJECT NAME>', projectName))
+        .pipe(replace('PROJECTNAME', projectName))
         .pipe(fs.createWriteStream(projectLocation + '/README.md'));
+
+      fs.createReadStream(codeLocation + '/template/gitignore')
+        .pipe(fs.createWriteStream(projectLocation + '/.gitignore'));
 
       // Mark Completion
       console.log('New project "' + projectName + '" created at ' + projectLocation);
