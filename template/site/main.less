@@ -2,6 +2,42 @@
 
 @import (inline) 'node_modules/normalize.css/normalize.css';
 
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: @body-font;
+  margin: 0 auto;
+  padding: 0 1em;
+  max-width: 960px;
+}
+
+header {
+  border-bottom: 1px solid grey;
+  margin-bottom: 0.4em;
+
+  h1 {
+    display: inline-block;
+    margin-top: 1.2rem;
+    margin-bottom: 1rem;
+    margin-right: 4px;
+
+    a {
+      margin-left: 0;
+    }
+  }
+
+  .links-bar {
+    display: inline-block;
+
+    a.active {
+      font-weight: bold;
+    }
+  }
+
+  a {
+    display: inline-block;
+    margin: 0 6px;
+  }
 }

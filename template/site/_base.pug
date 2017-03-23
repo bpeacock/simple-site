@@ -24,4 +24,13 @@ html
     block head
 
   body
-    block content
+    header
+      h1
+        a(href='/') My Site
+
+      .links-bar
+        a(href='/about/') About
+        a(href='/blog/') Blog
+
+    article
+      block content

@@ -1,0 +1,18 @@
+extends ../_base
+
+block head
+  title Blog
+  meta(name='description' content='')
+  meta(name='keywords' content='')
+
+block content
+  h1 Blog
+
+  each post, name in sitemap().blog.contentsByDate
+    .img-title-description-row
+      h2
+        a(href=post.href)= post.meta.title
+
+      img(src=post.images[0])
+
+      p= post.meta.description
