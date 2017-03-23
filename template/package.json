@@ -10,6 +10,7 @@
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-concat-util": "^0.5.5",
+    "gulp-data": "^1.2.1",
     "gulp-ext-replace": "^0.3.0",
     "gulp-less": "^3.3.0",
     "gulp-pug": "^3.2.0",

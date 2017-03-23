@@ -88,10 +88,47 @@ var parseMdMeta = function(fileText) {
   };
 };
 
+var filePathToUrlPath = function(filePath) {
+  filePath = filePath.split('/');
+
+  if(filePath[filePath.length - 1].match(/^index\./)) {
+    filePath.pop();
+
+    if(filePath.length) {
+      filePath[filePath.length - 1] += '/';
+    }
+  }
+  else {
+    filePath[filePath.length - 1] = filePath[filePath.length - 1].split('.')[0] + '/';
+  }
+
+  return '/' + filePath.join('/');
+};
+
+var getPage = function(sitemap, path) {
+  var page = sitemap;
+  path = path.split('/');
+
+  if(path[0] == '')               path.shift();
+  if(path[path.length - 1] == '') path.pop();
+
+  _.each(path, function(directory) {
+    if(page.contents) {
+      page = page.contents;
+    }
+
+    page = page[directory];
+  });
+
+  return page;
+};
+
 module.exports = {
   generate: function() {
     return mapDirectory('./site');
   },
-  parseMdMeta: parseMdMeta,
-  getFile: getFile
+  parseMdMeta:        parseMdMeta,
+  getFile:            getFile,
+  filePathToUrlPath:  filePathToUrlPath,
+  getPage:            getPage
 };

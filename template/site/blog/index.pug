@@ -8,7 +8,7 @@ block head
 block content
   h1 Blog
 
-  each post, name in sitemap().blog.contentsByDate
+  each post, name in sitemap['blog'].contentsByDate
     .img-title-description-row
       h2
         a(href=post.href)= post.meta.title

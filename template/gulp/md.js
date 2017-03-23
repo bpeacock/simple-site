@@ -4,23 +4,26 @@ var gulp          = require('gulp'),
     config        = require('../config.js'),
     marked        = require('marked'),
     pug           = require('pug'),
-    parseMdMeta   = require('./sitemap').parseMdMeta,
+    _             = require('underscore'),
+    sitemap       = require('./sitemap'),
     textTransform = require('gulp-text-simple'),
     extReplace    = require('gulp-ext-replace');
 
-var generatePage = function(string) {
-  var content = parseMdMeta(string),
-      template = pug.compileFile('./site/_markdown.pug'),
-      template404 = pug.compileFile('./site/404.pug');
+var generatePage = function(string, options) {
+  var content     = sitemap.parseMdMeta(string),
+      template    = pug.compileFile('./site/_markdown.pug'),
+      template404 = pug.compileFile('./site/404.pug'),
+      urlPath     = sitemap.filePathToUrlPath(path.relative(path.resolve('./site'), options.sourcePath));
+
+  config.sitemap  = sitemap.generate();
+  config = _.extend(config, sitemap.getPage(config.sitemap, urlPath));
 
   if(content.meta.draft) {
-    return template404();
+    return template404(config);
   }
   else {
-    return template({
-      content:  marked(content.markdown),
-      meta:     content.meta
-    });
+    config.content  = marked(content.markdown);
+    return template(config);
   }
 };
 

@@ -9,4 +9,8 @@ block head
 
 block content
   h1= meta.title
+
+  each image in images
+    img.full(src=image)
+
   div!= content
