@@ -1,3 +1,3 @@
 module.exports = {
-  root: 'https://mysite.com'
+  sitemap: require('./gulp/sitemap').generate
 };

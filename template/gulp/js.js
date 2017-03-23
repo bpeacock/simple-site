@@ -10,7 +10,6 @@ module.exports = function() {
         insertGlobals: true,
         debug: true
       })
-        .transform(require('jadeify'))
         .bundle();
     }))
     .on('error', require('./error'))
